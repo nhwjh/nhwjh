@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="css/css.css"/>-->
+		<style type="text/css">
+		.current{
+			background: red;
+			color: #fff;
+		}
+		button{
+			margin: 0 auto;
+			display: block;
+			width: 100px;
+			height: 30px;
+			
+		}
+		</style>
+	</head>
+	<body>
+		<h1 align="center">点名器</h1>
+		<button>开始点名</button>
+		<table align="center" width="500px" border="1">
+			
+			<tr align="center">
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr align="center">
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			
+			
+			<tr align="center">
+				<td>9</td>
+				<td>10</td>
+				<td>11</td>
+				<td>12</td>
+			</tr>
+			<tr align="center">
+				<td>13</td>
+				<td>14</td>
+				<td>15</td>
+				<td>16</td>
+			</tr>
+			
+			
+		</table>
+		
+		<script type="text/javascript">
+			var btn = document.getElementsByTagName("button")[0];
+			var tds = document.getElementsByTagName("td");
+			console.log(tds);
+			var flog = true,timer = null;
+			btn.onclick=function(){
+				if(flog){
+					flog=false;
+					this.innerHTML="停止";
+					timer=setInterval(function(){
+						var num =parseInt(Math.random() * tds.length);
+						for(i=0;i<tds.length;i++){
+							tds[i].className="";
+						};
+						console.log(num);
+						tds[num].className="current";
+					},100);
+					}else{
+						flog=true;
+						this.innerHTML="开始";
+						clearInterval(timer);
+				}
+			}
+		</script>
+	</body>
+</html>
+<!-- 
+    git status     查看状态
+    git add .      添加所有有改变的文件或文件夹
+    git commit -m '注释'    提交到本地仓库
+远程仓库管理(增删查)
+    git remote  查看远程仓库别名
+    git remote -v 查看别名和地址
+    git remote add 别名 地址
+        地址：
+            1. ssh协议
+            2. https协议
+    git remote rm 别名    删除
+推送到远程仓库中
+    git push -u origin master
+    
+密钥管理
+    1. 生成rsa非对称密钥
+        ssh-keygen -t rsa   //再敲3次回车
+    2. 查看并复制公钥内容
+    3. 将公钥内容放到GitHub服务器上
+        右上角头像 -> settings -> SSH and GPG keys -> new SSH key -> title随便写，Key粘贴公钥内容 -> Add SSH key
+ -->
